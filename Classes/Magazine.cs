@@ -13,6 +13,7 @@ namespace Classes
         private string descrphonetion;
         private string phone;
         private string email;
+        private int countPeople;
         public Magazine()
         {
             name = null;
@@ -45,23 +46,57 @@ namespace Classes
             get => email;
             set => email = value;
         }
+        public int CountPeople
+        {
+            get => countPeople;
+            set => countPeople = value;
+        }
         public void Input()
         {
             Console.Write("Введите название журнала: ");
-            name = Console.ReadLine();
+            Name = Console.ReadLine();
             Console.Write("Введите год основания: ");
-            year = Console.ReadLine();
+            Year = Console.ReadLine();
             Console.Write("Введите описание журнала: ");
-            descrphonetion = Console.ReadLine();
+            Descrphonetion = Console.ReadLine();
             Console.Write("Введите контактный телефон: ");
-            phone = Console.ReadLine();
+            Phone = Console.ReadLine();
             Console.Write("Введите контактный e-mail: ");
-            email = Console.ReadLine();
+            Email = Console.ReadLine();
+            Console.Write("Введите количество сотрудников: ");
+            countPeople = Convert.ToInt32(Console.ReadLine());
         }
 
         public override string ToString()
         {
-            return $"Название журнала: {name}\nГод основания: {year}\nОписание журнала: {descrphonetion}\nКонтактный номер: {email}\nКонтактный e-mail: {email}";
+            return $"Название журнала: {Name}\nГод основания: {Year}\nОписание журнала: {Descrphonetion}\nКонтактный номер: {Phone}\nКонтактный e-mail: {email}\nКоличество сотрудников: {countPeople}";
+        }
+
+        public static Magazine operator +(Magazine a, int opl)
+        {
+            a.countPeople += opl;
+            return a;
+        }
+        public static Magazine operator -(Magazine a, int opl)
+        {
+            a.countPeople -= opl;
+            return a;
+        }
+        public static bool operator ==(Magazine op1, Magazine op2)
+        {
+            return op1.countPeople == op2.countPeople;
+        }
+        public static bool operator !=(Magazine op1, Magazine op2)
+        {
+            return op1.countPeople != op2.countPeople;
+        }
+        public static bool operator <(Magazine op1, Magazine op2)
+        {
+            return op1.countPeople < op2.countPeople;
+        }
+        public static bool operator >(Magazine op1, Magazine op2)
+        {
+            return op1.countPeople > op2.countPeople;
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Classes
         private string descrphonetion;
         private string phone;
         private string email;
+        private double square;
         public Shop()
         {
             name = null;
@@ -45,23 +46,56 @@ namespace Classes
             get => email;
             set => email = value;
         }
+        public double Square
+        {
+            get => square;
+            set => square = value;
+        }
         public void Input()
         {
             Console.Write("Введите название магазина: ");
-            name = Console.ReadLine();
+            Name = Console.ReadLine();
             Console.Write("Введите адрес: ");
-            address = Console.ReadLine();
+            Address = Console.ReadLine();
             Console.Write("Введите описание профиля магазина: ");
-            descrphonetion = Console.ReadLine();
+            Descrphonetion = Console.ReadLine();
             Console.Write("Введите контактный телефон: ");
-            phone = Console.ReadLine();
+            Phone = Console.ReadLine();
             Console.Write("Введите контактный e-mail: ");
-            email = Console.ReadLine();
+            Email = Console.ReadLine();
+            Console.Write("Введите площадь магазина: ");
+            Square = Convert.ToInt32(Console.ReadLine());
         }
 
         public override string ToString()
         {
-            return $"Название магазина: {name}\nАдрес: {address}\nОписание профиля магазина: {descrphonetion}\nКонтактный номер: {email}\nКонтактный e-mail: {email}";
+            return $"Название магазина: {Name}\nАдрес: {Address}\nОписание профиля магазина: {Descrphonetion}\nКонтактный номер: {Email}\nКонтактный e-mail: {email}\nПлощадь магазина: {Square}";
+        }
+        public static Shop operator +(Shop a, int opl)
+        {
+            a.Square += opl;
+            return a;
+        }
+        public static Shop operator -(Shop a, int opl)
+        {
+            a.Square -= opl;
+            return a;
+        }
+        public static bool operator ==(Shop op1, Shop op2)
+        {
+            return op1.Square == op2.Square;
+        }
+        public static bool operator !=(Shop op1, Shop op2)
+        {
+            return op1.Square != op2.Square;
+        }
+        public static bool operator <(Shop op1, Shop op2)
+        {
+            return op1.Square < op2.Square;
+        }
+        public static bool operator >(Shop op1, Shop op2)
+        {
+            return op1.Square > op2.Square;
         }
     }
 }
